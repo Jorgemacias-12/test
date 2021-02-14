@@ -7,7 +7,31 @@
 
 .app{
     display: flex;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     background-color: #121212;
+}
+
+.app > .container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 50px;
+    background-color: white;
+    width: 30%;
+    height: 50%;
+}
+
+.title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.inputGroup{
+    margin: 5px;
+    width: 80%;
+    height: 20%;
+    background-color: blue;
 }
