@@ -1,19 +1,20 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
     font-family: arial;
     outline: none;
 }
 
-.app{
+.app {
     display: flex;
-    justify-content: center;
+    flex-flow: column;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     background-color: #121212;
 }
 
-.app > .container{
+.app>.container {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -23,15 +24,98 @@
     height: 50%;
 }
 
-.title{
+.title {
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;
 }
 
-.inputGroup{
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 5px;
     width: 80%;
-    height: 20%;
-    background-color: blue;
+    height: 25%;
+}
+
+.input {
+    border: 2px solid #ccc;
+    width: calc( 40% - 5px);
+    height: 35px;
+    padding-left: 5px;
+}
+
+.input:hover {
+    border: 2px solid #2e6dff;
+    transition: 0.1s all;
+}
+
+.input:focus {
+    border: 2px solid #2e6dff;
+}
+
+.inputGroup>.errorContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 10px;
+    width: 60%;
+    height: 40%;
+    background-color: #ff3333;
+}
+
+.closeable-c {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    height: auto;
+}
+
+.closeable {
+    margin-left: 5px;
+    color: white;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    background-color: #bb2929;
+}
+
+.text {
+    text-align: center;
+    width: 85%;
+    color: white;
+    font-weight: bold;
+}
+
+.button {
+    color: white;
+    font-weight: bolder;
+    border: 2px solid transparent;
+    background-color: #24292e;
+    width: 25%;
+    height: 40px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #1ed760;
+    transition: 0.1s all;
+}
+
+/* Estilos para resultados */
+
+.results{
+    margin-top: 50px;
+    width: 50%;
+    height: 30%;
+    background-color: #1ed760;
 }
