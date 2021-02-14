@@ -74,8 +74,14 @@
 }
 
 .closeable {
+    cursor: pointer;
     margin-left: 5px;
     color: white;
+}
+
+.closeable:hover{
+    color: black;
+    transition: 0.5s all;
 }
 
 .buttonGroup {
