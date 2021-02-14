@@ -1,6 +1,3 @@
-let inputNumber1;
-let inputNumber2;
-
 function validate() {
 
     const classes = ['errorContainer','closeable-c',
@@ -8,6 +5,9 @@ function validate() {
 
     const group_1 = document.getElementById("inputGroup-1");
     const group_2 = document.getElementById("inputGroup-2");
+
+    let inputNumber1;
+    let inputNumber2;
 
     inputNumber1 = document.getElementById("input-1");
     inputNumber2 = document.getElementById("input-2");
@@ -63,10 +63,7 @@ function validate() {
         errorText.className = classes[4];
         errorText.innerText = "El campo esta vacio"
         parentElement.appendChild(errorText);
-
-        // Parent #2
-
-
+        // Parent #21
         parentElement_2 = document.createElement("div");
         parentElement_2.className = classes[0];
         closeableParent_2 = document.createElement("div");
@@ -86,6 +83,29 @@ function validate() {
     else {
         let number1 = parseInt(inputNumber1.value);
         let number2 = parseInt(inputNumber2.value);
+        let resultElement = document.createElement("div");
+        resultElement.className = "result";
+
+        closeableParent = document.createElement("div");
+        closeableParent.className = classes[1];
+
+        closeableElement = document.createElement("i");
+        closeableElement.className = classes[2] + " " + classes[3];
+        closeableParent.appendChild(closeableElement)
+
+        resultElement.appendChild(closeableParent);
+
+        errorText = document.createElement("p");
+        errorText.className = classes[4] + " " + "text-r";
+        errorText.innerText = "Suma: " + number1 + " + " + number2 + " = " +
+        calculate(number1,number2);
+        resultElement.appendChild(errorText);
+
+        document.getElementById("containerResults").appendChild(
+            resultElement
+        );
+        inputNumber1.value = "";
+        inputNumber2.value = "";
     }
 
 
