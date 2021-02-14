@@ -84,7 +84,6 @@
     align-items: center;
     width: 100%;
     height: 10%;
-    background-color: #bb2929;
 }
 
 .text {
@@ -113,9 +112,28 @@
 
 /* Estilos para resultados */
 
-.results{
+.results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 50px;
     width: 50%;
-    height: 30%;
+    height: 20%;
+}
+
+.results>.result {
+    width: 50%;
+    height: 70%;
     background-color: #1ed760;
+}
+
+.closeable-r {
+    margin: 5px;
+    color: white;
+}
+
+.text-r {
+    width: 100%;
+    height: calc(100% - 26px);
+    line-height: 109px;
 }
