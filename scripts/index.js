@@ -1,7 +1,7 @@
 function validate() {
 
-    const classes = ['errorContainer','closeable-c',
-                    'fas fa-times','closeable','text'];
+    const classes = ['errorContainer', 'closeable-c',
+        'fas fa-times', 'closeable', 'text'];
 
     const group_1 = document.getElementById("inputGroup-1");
     const group_2 = document.getElementById("inputGroup-2");
@@ -12,57 +12,60 @@ function validate() {
     inputNumber1 = document.getElementById("input-1");
     inputNumber2 = document.getElementById("input-2");
 
-    let parentElement;
+    let parentElement_1;
     let parentElement_2;
     let closeableParent;
     let closeableElement;
     let errorText;
 
     if (inputNumber1.value == "" && inputNumber2.value != "") {
-        parentElement = document.createElement("div");
-        parentElement.className = classes[0];
+        parentElement_1 = document.createElement("div");
+        parentElement_1.className = classes[0];
         closeableParent = document.createElement("div");
         closeableParent.className = classes[1];
-        parentElement.appendChild(closeableParent);
+        parentElement_1.appendChild(closeableParent);
         closeableElement = document.createElement("i");
-        closeableElement.className = classes[2] +" "+ classes[3];
+        closeableElement.className = classes[2] + " " + classes[3];
         closeableParent.appendChild(closeableElement);
         errorText = document.createElement("p");
         errorText.className = classes[4];
         errorText.innerText = "El campo esta vacio"
-        parentElement.appendChild(errorText);
-        group_1.appendChild(parentElement);
+        parentElement_1.appendChild(errorText);
+        group_1.appendChild(parentElement_1);
     }
 
     if (inputNumber2.value == "" && inputNumber1.value != "") {
-        parentElement = document.createElement("div");
-        parentElement.className = classes[0];
+        parentElement_1 = document.createElement("div");
+        parentElement_1.className = classes[0];
         closeableParent = document.createElement("div");
         closeableParent.className = classes[1];
-        parentElement.appendChild(closeableParent);
+        parentElement_1.appendChild(closeableParent);
         closeableElement = document.createElement("i");
         closeableElement.className = classes[2] + " " + classes[3];
         closeableParent.appendChild(closeableElement);
         errorText = document.createElement("p");
         errorText.className = classes[4];
         errorText.innerText = "El campo esta vacio"
-        parentElement.appendChild(errorText);
-        group_2.appendChild(parentElement);
+        parentElement_1.appendChild(errorText);
+        group_2.appendChild(parentElement_1);
     }
 
     if (inputNumber1.value == "" && inputNumber2.value == "") {
-        parentElement = document.createElement("div");
-        parentElement.className = classes[0];
+        parentElement_1 = document.createElement("div");
+        parentElement_1.className = classes[0];
         closeableParent = document.createElement("div");
         closeableParent.className = classes[1];
-        parentElement.appendChild(closeableParent);
+        parentElement_1.appendChild(closeableParent);
         closeableElement = document.createElement("i");
+        closeableElement.addEventListener("click", function(){
+            deleteElement(parentElement_1);
+        });
         closeableElement.className = classes[2] + " " + classes[3];
         closeableParent.appendChild(closeableElement);
         errorText = document.createElement("p");
         errorText.className = classes[4];
         errorText.innerText = "El campo esta vacio"
-        parentElement.appendChild(errorText);
+        parentElement_1.appendChild(errorText);
         // Parent #21
         parentElement_2 = document.createElement("div");
         parentElement_2.className = classes[0];
@@ -70,6 +73,9 @@ function validate() {
         closeableParent_2.className = classes[1];
         parentElement_2.appendChild(closeableParent_2);
         closeableElement_2 = document.createElement("i");
+        closeableElement_2.addEventListener("click", function(){
+            deleteElement(parentElement_2);
+        });
         closeableElement_2.className = classes[2] + " " + classes[3];
         closeableParent_2.appendChild(closeableElement_2);
         errorText_2 = document.createElement("p");
@@ -77,8 +83,15 @@ function validate() {
         errorText_2.innerText = "El campo esta vacio"
         parentElement_2.appendChild(errorText_2);
 
-        group_1.appendChild(parentElement);
+        group_1.appendChild(parentElement_1);
         group_2.appendChild(parentElement_2);
+
+        closeableElement.addEventListener("click", function () {
+            deleteElement(parentElement_1);
+        }, false);
+        closeableElement.addEventListener("click", function () {
+            deleteElement(parentElement_2);
+        }, false);
     }
     else {
         let number1 = parseInt(inputNumber1.value);
@@ -98,12 +111,15 @@ function validate() {
         errorText = document.createElement("p");
         errorText.className = classes[4] + " " + "text-r";
         errorText.innerText = "Suma: " + number1 + " + " + number2 + " = " +
-        calculate(number1,number2);
+            calculate(number1, number2);
         resultElement.appendChild(errorText);
 
         document.getElementById("containerResults").appendChild(
             resultElement
         );
+        closeableElement.addEventListener("click", function () {
+            deleteElement(resultElement);
+        }, false);
         inputNumber1.value = "";
         inputNumber2.value = "";
     }
@@ -115,7 +131,7 @@ const form_button = document.getElementById("button-form");
 form_button.addEventListener("click", validate);
 
 
-function calculate(a,b){
+function calculate(a, b) {
     return a + b;
 }
 
@@ -143,3 +159,8 @@ setInputFilter(document.getElementById("input-1"), function (value) {
 setInputFilter(document.getElementById("input-2"), function (value) {
     return /^-?\d*$/.test(value);
 });
+
+function deleteElement(arg1) {
+    let parent = arg1.parentElement;
+    parent.removeChild(arg1);
+}
